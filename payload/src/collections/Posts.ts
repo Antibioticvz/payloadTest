@@ -21,6 +21,13 @@ const Posts: CollectionConfig = {
       name: "image",
       type: "text",
     },
+    {
+      name: "comments",
+      label: "Comments",
+      type: "relationship",
+      relationTo: "comments",
+      hasMany: true,
+    },
   ],
 }
 
