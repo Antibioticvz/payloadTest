@@ -22,7 +22,12 @@ Create a `.env` file and fill it with your database credentials like in `.env.ex
 
 <b> Next steps populate the database with seeds data</b>
 
-TODO `yarn seeds`
+<h3>To populate the database with seeds data</h3>
+
+Change the `.env` file to `PAYLOAD_SEED=true`
+
+<h3>Generate types for Payload for development</h3>
+`cd payload && yarn generate:types`
 
 <b>Finally</b> `yarn && yarn dev`
 
