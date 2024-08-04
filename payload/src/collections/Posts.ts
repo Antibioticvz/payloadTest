@@ -5,6 +5,7 @@ const Posts: CollectionConfig = {
   access: {
     // Disable auth for now
     read: () => true,
+    update: () => true,
   },
   fields: [
     {
