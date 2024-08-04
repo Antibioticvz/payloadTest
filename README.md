@@ -54,7 +54,7 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
  <p>[x] Create Posts and Comments endpoints</p>
  <p>[x] Configure relationships for models</p>
  <p>[x] Configure access control for not authenticated users</p>
- <p>[ ] Posts Seeds</p>
+ <p>[x] Posts Seeds</p>
 
 <h3 align="left">App</h3>
  <p>[x] Initial config for NextJS</p>
