@@ -22,7 +22,12 @@ Create a `.env` file and fill it with your database credentials like in `.env.ex
 
 <b> Next steps populate the database with seeds data</b>
 
-TODO `yarn seeds`
+<h3>To populate the database with seeds data</h3>
+
+Change the `.env` file to `PAYLOAD_SEED=true`
+
+<h3>Generate types for Payload for development</h3>
+`cd payload && yarn generate:types`
 
 <b>Finally</b> `yarn && yarn dev`
 
@@ -49,7 +54,7 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
  <p>[x] Create Posts and Comments endpoints</p>
  <p>[x] Configure relationships for models</p>
  <p>[x] Configure access control for not authenticated users</p>
- <p>[ ] Posts Seeds</p>
+ <p>[x] Posts Seeds</p>
 
 <h3 align="left">App</h3>
  <p>[x] Initial config for NextJS</p>
