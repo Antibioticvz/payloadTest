@@ -1,7 +1,5 @@
-import 'server-only'
-
-async function fetchData() {
-  const res = await fetch(`${process.env.PAYLOAD_API}/posts`)
+async function fetchData(slug: string) {
+  const res = await fetch(`${process.env.PAYLOAD_API}/${slug}`)
 
   if (!res.ok) {
     throw new Error('Failed to fetch data')
