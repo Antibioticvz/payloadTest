@@ -1,4 +1,4 @@
-import { FC, Fragment } from 'react'
+import { FC } from 'react'
 
 export interface IComment {
   id: string | number
@@ -6,9 +6,9 @@ export interface IComment {
 }
 
 const Comment: FC<IComment> = ({ id, text }) => (
-  <Fragment key={id}>
-    <p className="text-sm text-muted-foreground">{text}</p>
-  </Fragment>
+  <p key={id} className="text-sm text-muted-foreground">
+    {text}
+  </p>
 )
 
 export default Comment
