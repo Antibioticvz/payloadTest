@@ -28,7 +28,8 @@ const Post: FC<IPost> = ({ params }) => {
         <img
           src="https://picsum.photos/800/800"
           alt="Post image"
-          className="w-full h-64 text-muted-foreground"
+          className="w-full text-muted-foreground"
+          style={{ height: '100%' }}
         />
       </div>
 
@@ -36,7 +37,7 @@ const Post: FC<IPost> = ({ params }) => {
         <h1 className="text-2xl font-bold">Title</h1>
 
         <div
-          className="flex flex-col mt-4 text-base text-muted-foreground  space-y-4"
+          className="flex flex-col mt-4 text-base text-muted-foreground space-y-4"
           dangerouslySetInnerHTML={createMarkup(testHtml)}
         />
       </div>
