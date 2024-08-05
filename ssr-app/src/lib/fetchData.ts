@@ -1,3 +1,5 @@
+import 'server-only'
+
 async function fetchData(slug: string) {
   const res = await fetch(`${process.env.PAYLOAD_API}/${slug}`)
 
