@@ -4,50 +4,48 @@ import { FC, useState } from 'react'
 
 import { Textarea } from '@/components/ui/textarea'
 import { Button } from '@/components/ui/button'
+import Comment, { IComment } from '@/components/Comment'
+import { createMarkup } from '@/lib/utils'
 
 interface IPost {
   params: {
     id: string
+    comments?: IComment[]
   }
 }
+
+const testHtml = `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>!!!!!!Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>`
+
 const Post: FC<IPost> = ({ params }) => {
+  const { id, comments } = params
   const [isSubmitting, setIsSubmitting] = useState(false)
 
-  console.log(params.id)
+  console.log(id)
 
   return (
     <div className="max-w-2xl mx-auto p-4">
       <div className="bg-muted w-full h-64 flex items-center justify-center">
         <img
-          src="https://picsum.photos/400/400"
-          alt="Image"
+          src="https://picsum.photos/800/800"
+          alt="Post image"
           className="w-full h-64 text-muted-foreground"
-          width="48"
-          height="48"
-          style={{ aspectRatio: '48/48', objectFit: 'cover' }}
         />
       </div>
+
       <div className="mt-6">
         <h1 className="text-2xl font-bold">Title</h1>
-        <p className="mt-4 text-base text-muted-foreground">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a sollicitudin leo.
-          Morbi vel odio velit. Suspendisse ac mauris ac erat vulputate congue nec vitae sem. Proin
-          vel ante quis arcu lobortis aliquet. Nullam leo nisl, efficitur vel fringilla non,
-          dignissim vel enim. Nullam ipsum massa, facilisis ut maximus eget, viverra sed nisi.
-          Integer pulvinar purus sed magna imperdiet semper. Maecenas quis scelerisque sem. Nullam
-          et accumsan ipsum. Curabitur in sollicitudin nisl. Proin eu nunc quam. Aliquam semper
-          laoreet iaculis.
-        </p>
-        <p className="mt-4 text-base text-muted-foreground">
-          Vestibulum auctor vulputate laoreet. Ut ac lacus eu eros suscipit varius vel ultrices
-          orci. Nam molestie ultrices tincidunt. Nulla non lacus lectus. Etiam consectetur erat sit
-          amet tortor suscipit commodo. Etiam venenatis accumsan metus, sit amet ultricies ipsum
-          finibus nec. Phasellus consequat orci quis eleifend sollicitudin. Aenean quam neque,
-          lacinia sit amet egestas in, porttitor non leo. Sed tempus felis ut nisi semper, id
-          bibendum justo vulputate.
-        </p>
+
+        <div
+          className="flex flex-col mt-4 text-base text-muted-foreground  space-y-4"
+          dangerouslySetInnerHTML={createMarkup(testHtml)}
+        />
       </div>
-      <div className="mt-8 border-t pt-4">
+
+      <div className="mt-8 mb-4 border-t pt-4">
+        {comments?.map(comment => (
+          <Comment {...comment} />
+        ))}
+
         <label htmlFor="comment" className="block text-sm font-medium text-muted-foreground">
           Comment
         </label>
