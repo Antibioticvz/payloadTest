@@ -60,7 +60,7 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
  <p>[x] Initial config for NextJS</p>
  <p>[x] Prettier config</p>
  <p>[x] Configure Routes</p>
- <p>[ ] Components and Pages</p>
+ <p>[x] Components and Pages</p>
  <p>[ ] Connect to PayloadCMS</p>
  <p>[ ] Comment Functionality</p>
  <p>[ ] Add SEO</p>
