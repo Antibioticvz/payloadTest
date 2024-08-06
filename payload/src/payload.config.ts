@@ -5,6 +5,7 @@ import { postgresAdapter } from '@payloadcms/db-postgres'
 import { webpackBundler } from '@payloadcms/bundler-webpack'
 import { slateEditor } from '@payloadcms/richtext-slate'
 import { buildConfig } from 'payload/config'
+import seoPlugin from '@payloadcms/plugin-seo'
 
 import Users from './collections/Users'
 import Posts from './collections/Posts'
@@ -24,7 +25,15 @@ export default buildConfig({
   graphQL: {
     schemaOutputFile: path.resolve(__dirname, 'generated-schema.graphql'),
   },
-  plugins: [payloadCloud()],
+  plugins: [
+    payloadCloud(),
+    seoPlugin({
+      collections: ['posts'],
+      generateTitle: ({ doc }) =>
+        `Website.com — ${(doc as { title: { value: string } })?.title?.value}`,
+      generateDescription: ({ doc }) => (doc as { excerpt: { value: string } })?.excerpt?.value,
+    }),
+  ],
   db: postgresAdapter({
     pool: {
       connectionString: process.env.DATABASE_URI,

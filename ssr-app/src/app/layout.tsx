@@ -5,9 +5,10 @@ import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
+// This is default metadata that will be used in all pages except override
 export const metadata: Metadata = {
-  title: 'NextJS App',
-  description: 'Test app',
+  title: 'Test Task - NextJS App',
+  description: 'Test app description',
 }
 
 export default function RootLayout({

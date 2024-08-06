@@ -1,18 +1,28 @@
 import 'server-only'
 
 import { FC, Fragment } from 'react'
+import Image from 'next/image'
+import type { Metadata } from 'next'
 
 import Comment from '@/components/comment'
 import { createMarkup } from '@/lib/utils'
 import fetchData from '@/lib/fetchData'
 import CommentForm from '@/components/commentForm'
-
-import { Post as IPost } from '../../../../../payload/src/payload-types'
-import { Comment as IComment } from '../../../../../payload/src/payload-types'
+import { IPost } from '@/types/payloadCRM'
 
 interface IPostPage {
   params: {
     id: string
+  }
+}
+
+export async function generateMetadata({ params }: IPostPage): Promise<Metadata> {
+  const { id } = params
+  const { title, meta }: IPost = await fetchData(`posts/${id}`)
+
+  return {
+    title: meta?.title || `Test blog post - ${title}`,
+    description: meta?.description || 'Just a test blog post',
   }
 }
 
@@ -23,11 +33,13 @@ const Post: FC<IPostPage> = async ({ params }) => {
   return (
     <div className="max-w-2xl mx-auto p-4">
       <div className="bg-muted w-full h-64 flex items-center justify-center">
-        <img
+        <Image
           src={image as string}
           alt="Post image"
-          className="w-full text-muted-foreground"
-          style={{ height: '100%', objectFit: 'cover' }}
+          className="w-full h-full object-cover text-muted-foreground"
+          width={400} // provided for server-side image optimization as we use remote images
+          height={400} // provided for server-side image optimization as we use remote images
+          priority
         />
       </div>
 
@@ -43,7 +55,7 @@ const Post: FC<IPostPage> = async ({ params }) => {
       </div>
 
       <div className="mt-8 mb-4 border-t pt-4">
-        {(comments as IComment[])?.reverse().map(com => (
+        {comments?.reverse().map(com => (
           <Fragment key={com.id}>
             <Comment {...com} />
           </Fragment>

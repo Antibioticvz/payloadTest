@@ -57,7 +57,10 @@ export interface Post {
   } | null;
   text_html_?: string | null;
   image?: string | null;
-  comments?: (number | Comment)[] | null;
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+  };
   updatedAt: string;
   createdAt: string;
 }
@@ -68,6 +71,7 @@ export interface Post {
 export interface Comment {
   id: number;
   text: string;
+  post?: (number | null) | Post;
   updatedAt: string;
   createdAt: string;
 }

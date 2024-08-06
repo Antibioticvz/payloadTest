@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { Comment as IComment } from '../../../../payload/src/payload-types'
+import { IComment } from '@/types/payloadCRM'
 
 const Comment: FC<IComment> = ({ text }) => (
   <p className="text-sm text-muted-foreground mb-4">{text}</p>
