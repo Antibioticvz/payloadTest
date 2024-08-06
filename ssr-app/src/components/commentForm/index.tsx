@@ -37,6 +37,7 @@ const CommentForm: FC<ICommentForm> = ({ postId }) => {
           formAction={formAction}
           className="mt-4 bg-blue-800 text-white w-3/12 rounded float-right"
           disabled={pending}
+          data-testid="submit-btn"
         >
           {pending && (
             <div className="mr-2 h-4 w-4 animate-spin contain rounded-full border-2 border-t-transparent" />
