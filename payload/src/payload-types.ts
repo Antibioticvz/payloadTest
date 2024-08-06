@@ -57,6 +57,10 @@ export interface Post {
   } | null;
   text_html_?: string | null;
   image?: string | null;
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+  };
   updatedAt: string;
   createdAt: string;
 }

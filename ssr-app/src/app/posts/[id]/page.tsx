@@ -2,17 +2,27 @@ import 'server-only'
 
 import { FC, Fragment } from 'react'
 import Image from 'next/image'
+import type { Metadata } from 'next'
 
 import Comment from '@/components/comment'
 import { createMarkup } from '@/lib/utils'
 import fetchData from '@/lib/fetchData'
 import CommentForm from '@/components/commentForm'
-
 import { IPost } from '@/types/payloadCRM'
 
 interface IPostPage {
   params: {
     id: string
+  }
+}
+
+export async function generateMetadata({ params }: IPostPage): Promise<Metadata> {
+  const { id } = params
+  const { title, meta }: IPost = await fetchData(`posts/${id}`)
+
+  return {
+    title: meta?.title || `Test blog post - ${title}`,
+    description: meta?.description || 'Just a test blog post',
   }
 }
 

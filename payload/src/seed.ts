@@ -51,6 +51,10 @@ const _dummyPostData = {
     },
   },
   image: 'https://picsum.photos/400',
+  meta: {
+    title: 'Website.com — Hello World Post',
+    description: 'some description',
+  },
 }
 
 export const seed = async (payload: Payload): Promise<void> => {
