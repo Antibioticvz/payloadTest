@@ -1,7 +1,7 @@
-import { CollectionConfig } from "payload/types"
+import { CollectionConfig } from 'payload/types'
 
 const Comments: CollectionConfig = {
-  slug: "comments",
+  slug: 'comments',
   access: {
     // Disable auth for now
     read: () => true,
@@ -9,9 +9,15 @@ const Comments: CollectionConfig = {
   },
   fields: [
     {
-      name: "text",
+      name: 'text',
       required: true,
-      type: "textarea",
+      type: 'textarea',
+    },
+    {
+      name: 'post',
+      label: 'Post',
+      type: 'relationship',
+      relationTo: 'posts',
     },
   ],
 }

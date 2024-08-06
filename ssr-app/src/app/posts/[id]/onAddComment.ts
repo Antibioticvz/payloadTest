@@ -2,26 +2,18 @@
 
 import { revalidatePath } from 'next/cache'
 
-const onAddComment = async (previousState: { message: string }, formData: FormData) => {
+const onAddComment = async (previousState: any, formData: FormData) => {
   try {
-    await fetch('http://localhost:3000/api/comments', {
+    await fetch(`${process.env.PAYLOAD_API}/comments`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        Accept: '*/*',
+        'Content-Type': 'application/json',
       },
-      body: new URLSearchParams({
-        text: formData.get('text')?.toString() || '@',
+      body: JSON.stringify({
+        text: formData.get('text'),
+        post: Number(formData.get('postId')),
       }),
-    })
-      .then(async res => {
-        const parsedResp = await res.json()
-
-        const {
-          doc: { id },
-        } = parsedResp
-      })
-      .finally(() => revalidatePath('/posts/[id]'))
+    }).finally(() => revalidatePath(`/posts/${formData.get('postId')}`))
 
     return { message: `Added comment` }
   } catch (error) {

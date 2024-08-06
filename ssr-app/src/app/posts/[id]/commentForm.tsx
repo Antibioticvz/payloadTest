@@ -8,22 +8,18 @@ import { Button } from '@/components/ui/button'
 
 import onAddComment from './onAddComment'
 
-const initialState = {
-  message: '111',
-}
-
 interface ICommentForm {
-  id: number
+  postId: string
 }
 
-const CommentForm: FC<ICommentForm> = ({ id }) => {
+const CommentForm: FC<ICommentForm> = ({ postId }) => {
   const { pending } = useFormStatus()
-  const [state, formAction] = useActionState(onAddComment, { message: `${id}` })
+  const [, formAction] = useActionState(onAddComment, null)
 
   return (
     <>
       <form action={formAction}>
-        <label htmlFor="text" className="block text-sm font-medium text-muted-foreground">
+        <label htmlFor="text" className="block text-sm font-medium text-muted-foreground ml-4">
           Comment
         </label>
         <Textarea
@@ -33,6 +29,9 @@ const CommentForm: FC<ICommentForm> = ({ id }) => {
           placeholder="Your comment"
           className="mt-2 w-full"
         />
+
+        {/* Have to pass postId to the form */}
+        <input name="postId" id="postId" type="hidden" value={postId} />
 
         <Button
           formAction={formAction}
@@ -44,9 +43,6 @@ const CommentForm: FC<ICommentForm> = ({ id }) => {
           )}
           Submit
         </Button>
-        <p aria-live="polite" className="sr-only" role="status">
-          {state?.message}
-        </p>
       </form>
     </>
   )

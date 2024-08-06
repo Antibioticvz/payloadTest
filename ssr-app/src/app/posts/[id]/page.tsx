@@ -28,7 +28,7 @@ const Post: FC<IPostPage> = async ({ params }) => {
           src={image as string}
           alt="Post image"
           className="w-full text-muted-foreground"
-          style={{ height: '100%' }}
+          style={{ height: '100%', objectFit: 'cover' }}
         />
       </div>
 
@@ -44,13 +44,13 @@ const Post: FC<IPostPage> = async ({ params }) => {
       </div>
 
       <div className="mt-8 mb-4 border-t pt-4">
-        {(comments as IComment[])?.map(com => (
+        {(comments as IComment[])?.reverse().map(com => (
           <Fragment key={com.id}>
             <Comment {...com} />
           </Fragment>
         ))}
 
-        <CommentForm />
+        <CommentForm postId={id} />
       </div>
     </div>
   )
