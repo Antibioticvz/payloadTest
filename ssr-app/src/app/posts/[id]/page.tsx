@@ -4,7 +4,7 @@ import { FC, Fragment } from 'react'
 import Image from 'next/image'
 import type { Metadata } from 'next'
 
-import Comment from '@/components/comment'
+import Comment from '@/components/singleComment'
 import { createMarkup } from '@/lib/utils'
 import fetchData from '@/lib/fetchData'
 import CommentForm from '@/components/commentForm'
