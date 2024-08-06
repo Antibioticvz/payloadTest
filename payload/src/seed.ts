@@ -50,7 +50,7 @@ const _dummyPostData = {
       version: 1,
     },
   },
-  image: 'https://picsum.photos/300/400',
+  image: 'https://picsum.photos/400',
 }
 
 export const seed = async (payload: Payload): Promise<void> => {

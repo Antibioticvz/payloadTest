@@ -26,10 +26,10 @@ const Post: FC<IPostPage> = async ({ params }) => {
         <Image
           src={image as string}
           alt="Post image"
-          className="w-full h-full text-muted-foreground"
-          width={350}
-          height={100}
-          style={{ objectFit: 'cover' }}
+          className="w-full h-full object-cover text-muted-foreground"
+          width={400} // provided for server-side image optimization as we use remote images
+          height={400} // provided for server-side image optimization as we use remote images
+          priority
         />
       </div>
 
