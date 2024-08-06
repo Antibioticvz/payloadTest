@@ -3,8 +3,9 @@
 Simple blog web application developed with [Next.js](https://nextjs.org/) and [PayloadCMS](https://payloadcms.com/). The application allow users to view a list of articles, view details of each article, and
 leave comments.
 
-<h2 align="left">Installation and usage guide</h2>
+<h1>Installation and usage guide</h1>
 Make sure you have installed PostgresSQL on your machine before you run the app.
+Create db `postgres` and user `postgres` with password `postgres`.
 
 <br>
 
@@ -14,7 +15,7 @@ Make sure you have installed PostgresSQL on your machine before you run the app.
 
 `brew services stop postgresql@16`
 
-<h3>Run Payload CRM on your machine for local development:</h3>
+<h2>Run Payload CRM on your machine for local development:</h2>
 
 Create a `.env` file and fill it with your database credentials like in `.env.example`
 
@@ -22,30 +23,35 @@ Create a `.env` file and fill it with your database credentials like in `.env.ex
 
 <b> Next steps populate the database with seeds data</b>
 
-<h3>To populate the database with seeds data</h3>
+<h2>To populate the database with seeds data</h2>
 
 Change the `.env` file to `PAYLOAD_SEED=true`
 
-<h3>Generate types for Payload for development</h3>
+<h3>Generate types for Payload for development (Can skip)</h3>
+
 `cd payload && yarn generate:types`
 
-<b>Finally</b> `yarn && yarn dev`
+Go to the app folder `cd payload`
+
+<b>Start the server</b> `yarn && yarn dev`
 
 Now Open [http://localhost:3000/admin](http://localhost:3000/admin) to access the admin panel.
 
 Create your first admin user using the form on the page
 
-<h3>Run NextJS on your machine for local development:</h3>
+<h2>Run NextJS on your machine for local development:</h2>
 
 Go to the app folder `cd ssr-app`
 
-`yarn && yarn dev`
+<b>Start the SSR App</b> `yarn && yarn dev`
 
 Open [http://localhost:3001](http://localhost:3001) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+<h2>Playwright tests</h2>
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Start the playload server than start the ssr app.
+
+<b>Run the tests in the ssr-app folder</b> `yarn test`
 
 <h2>Development roadmap</h2>
 <h3>CMS</h3>
@@ -64,8 +70,8 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
  <p>[x] Connect to PayloadCMS</p>
  <p>[x] Comment Functionality</p>
  <p>[x] Load more posts</p>
- <p>[ ] Add SEO</p>
- <p>[ ] Add Jest tests</p>
+ <p>[x] Add SEO</p>
+ <p>[x] Add Playwright tests</p>
 </br>
 
 developed by [Victor Zadorozhnyy](https://github.com/Antibioticvz)

@@ -30,7 +30,12 @@ const PostList: FC<IPost> = ({ id, title, text_html_, image }) => {
           />
         )}
         <Link href={`/posts/${id}`}>
-          <Button className="mt-4 bg-blue-800 text-white w-3/12 rounded">Button</Button>
+          <Button
+            data-testid={`post-btn-${id}`}
+            className="mt-4 bg-blue-800 text-white w-3/12 rounded"
+          >
+            Button
+          </Button>
         </Link>
       </div>
     </div>
