@@ -63,6 +63,7 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
  <p>[x] Components and Pages</p>
  <p>[x] Connect to PayloadCMS</p>
  <p>[x] Comment Functionality</p>
+ <p>[] Load more posts</p>
  <p>[ ] Add SEO</p>
  <p>[ ] Add Jest tests</p>
 </br>
