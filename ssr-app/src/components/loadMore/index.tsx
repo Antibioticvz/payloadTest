@@ -6,8 +6,7 @@ import { Button } from '@/components/ui/button'
 import PostList from '@/components/postList'
 import fetchPosts from '@/lib/fetchPosts'
 
-// Generated types
-import { Post as IPost } from '../../../../payload/src/payload-types'
+import { IPost } from '@/types/payloadCRM'
 
 export const LoadMore: FC = () => {
   const [pending, setPending] = useState(false)

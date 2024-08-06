@@ -7,8 +7,7 @@ import { createMarkup } from '@/lib/utils'
 import fetchData from '@/lib/fetchData'
 import CommentForm from '@/components/commentForm'
 
-import { Post as IPost } from '../../../../../payload/src/payload-types'
-import { Comment as IComment } from '../../../../../payload/src/payload-types'
+import { IPost } from '@/types/payloadCRM'
 
 interface IPostPage {
   params: {
@@ -43,7 +42,7 @@ const Post: FC<IPostPage> = async ({ params }) => {
       </div>
 
       <div className="mt-8 mb-4 border-t pt-4">
-        {(comments as IComment[])?.reverse().map(com => (
+        {comments?.reverse().map(com => (
           <Fragment key={com.id}>
             <Comment {...com} />
           </Fragment>

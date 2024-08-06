@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { createMarkup } from '@/lib/utils'
 
-import { Post as IPost } from '../../../../payload/src/payload-types'
+import { IPost } from '@/types/payloadCRM'
 
 const PostList: FC<IPost> = ({ id, title, text_html_, image }) => {
   return (

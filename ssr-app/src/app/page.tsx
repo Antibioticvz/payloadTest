@@ -5,8 +5,7 @@ import PostList from '@/components/postList'
 import { LoadMore } from '@/components/loadMore'
 import fetchData from '@/lib/fetchData'
 
-// Generated types
-import { Post as IPost } from '../../../payload/src/payload-types'
+import { IPost } from '@/types/payloadCRM'
 
 const Home = async () => {
   const data = await fetchData('posts?limit=5')
