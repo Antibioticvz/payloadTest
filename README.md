@@ -1,77 +1,97 @@
-<h1 align="center">Test task for Payload CMS and NextJS tech stack</h1>
 
-Simple blog web application developed with [Next.js](https://nextjs.org/) and [PayloadCMS](https://payloadcms.com/). The application allow users to view a list of articles, view details of each article, and
-leave comments.
+<h1 align="center">Test Task for Payload CMS and NextJS Tech Stack</h1>
 
-<h1>Installation and usage guide</h1>
-Make sure you have installed PostgresSQL on your machine before you run the app.
-Create db `postgres` and user `postgres` with password `postgres`.
+This is a simple blog web application developed with [Next.js](https://nextjs.org/) and [Payload CMS](https://payloadcms.com/). The application allows users to view a list of articles, view details of each article, and leave comments.
 
-<br>
+## Installation and Usage Guide
 
-<b>Run and Stop Postgres on your machine for local development (MacOS):</b>
+Ensure you have PostgreSQL installed on your machine before running the app. Create a database named `postgres` and a user `postgres` with the password `postgres`.
 
-`brew services start postgresql@16`
+### Running and Stopping PostgreSQL (MacOS)
 
-`brew services stop postgresql@16`
+To start PostgreSQL:
+```sh
+brew services start postgresql@16
+```
 
-<h2>Run Payload CRM on your machine for local development:</h2>
+To stop PostgreSQL:
+```sh
+brew services stop postgresql@16
+```
 
-Create a `.env` file and fill it with your database credentials like in `.env.example`
+### Running Payload CMS for Local Development
 
-`cd payload && cp .env.example .env`
+1. Create a `.env` file and fill it with your database credentials as shown in `.env.example`:
+    ```sh
+    cd payload && cp .env.example .env
+    ```
 
-<b> Next steps populate the database with seeds data</b>
+2. Install Payload with the following command:
+    ```sh
+    yarn
+    ```
 
-<h2>To populate the database with seeds data</h2>
+3. To populate the database with seed data, set the `PAYLOAD_SEED` variable in the `.env` file to `true`:
+    ```sh
+    PAYLOAD_SEED=true
+    ```
 
-Change the `.env` file to `PAYLOAD_SEED=true`
+4. (Optional) Generate types for Payload for development:
+    ```sh
+    yarn generate:types
+    ```
 
-<h3>Generate types for Payload for development (Can skip)</h3>
+5. Start the Payload server:
+    ```sh
+    yarn dev
+    ```
 
-`cd payload && yarn generate:types`
+6. Open [http://localhost:3000/admin](http://localhost:3000/admin) to access the admin panel and create your first admin user using the form on the page.
 
-Go to the app folder `cd payload`
+### Running NextJS for Local Development
 
-<b>Start the server</b> `yarn && yarn dev`
+1. Navigate to the app folder:
+    ```sh
+    cd ssr-app
+    ```
 
-Now Open [http://localhost:3000/admin](http://localhost:3000/admin) to access the admin panel.
+2. Start the SSR App:
+    ```sh
+    yarn && yarn dev
+    ```
 
-Create your first admin user using the form on the page
+3. Open [http://localhost:3001](http://localhost:3001) in your browser to see the result.
 
-<h2>Run NextJS on your machine for local development:</h2>
+### Running Playwright Tests
 
-Go to the app folder `cd ssr-app`
+1. Ensure the Payload server is running and then start the SSR app.
 
-<b>Start the SSR App</b> `yarn && yarn dev`
+2. Run the tests in the `ssr-app` folder:
+    ```sh
+    yarn test
+    ```
 
-Open [http://localhost:3001](http://localhost:3001) with your browser to see the result.
+## Development Roadmap
 
-<h2>Playwright tests</h2>
+### CMS
+- [x] PostgreSQL DB installation
+- [x] Payload CMS initial config
+- [x] Create Posts and Comments endpoints
+- [x] Configure relationships for models
+- [x] Configure access control for non-authenticated users
+- [x] Posts seeds
 
-Start the playload server than start the ssr app.
+### App
+- [x] Initial config for NextJS
+- [x] Prettier config
+- [x] Configure routes
+- [x] Components and pages
+- [x] Connect to Payload CMS
+- [x] Comment functionality
+- [x] Load more posts
+- [x] Add SEO
+- [x] Add Playwright tests
 
-<b>Run the tests in the ssr-app folder</b> `yarn test`
+---
 
-<h2>Development roadmap</h2>
-<h3>CMS</h3>
- <p>[x] Postgres db installation</p>
- <p>[x] Payload CMS initial config</p>
- <p>[x] Create Posts and Comments endpoints</p>
- <p>[x] Configure relationships for models</p>
- <p>[x] Configure access control for not authenticated users</p>
- <p>[x] Posts Seeds</p>
-
-<h3 align="left">App</h3>
- <p>[x] Initial config for NextJS</p>
- <p>[x] Prettier config</p>
- <p>[x] Configure Routes</p>
- <p>[x] Components and Pages</p>
- <p>[x] Connect to PayloadCMS</p>
- <p>[x] Comment Functionality</p>
- <p>[x] Load more posts</p>
- <p>[x] Add SEO</p>
- <p>[x] Add Playwright tests</p>
-</br>
-
-developed by [Victor Zadorozhnyy](https://github.com/Antibioticvz)
+Developed by [Victor Zadorozhnyy](https://github.com/Antibioticvz)
