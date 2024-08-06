@@ -1,3 +1,5 @@
+import 'server-only'
+
 import { FC, Fragment } from 'react'
 
 import Comment from '@/components/comment'
