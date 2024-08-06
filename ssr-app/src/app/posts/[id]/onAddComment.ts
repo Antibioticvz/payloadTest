@@ -1,28 +1,32 @@
 'use server'
 
-export default async function onAddComment(
-  prevState: {
-    message: string
-  },
-  // formData: FormData
-  formData: FormData
-) {
-  // event.preventDefault()
-  // const formData = new FormData(event.currentTarget)
+import { revalidatePath } from 'next/cache'
 
+const onAddComment = async (previousState: { message: string }, formData: FormData) => {
   try {
     await fetch('http://localhost:3000/api/comments', {
       method: 'POST',
-      body: {
-        // @ts-ignore
-        text: 'ssss',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Accept: '*/*',
       },
+      body: new URLSearchParams({
+        text: formData.get('text')?.toString() || '@',
+      }),
     })
-    // Handle response if necessary
-    // const data = await response.json()
-    // ...
+      .then(async res => {
+        const parsedResp = await res.json()
+
+        const {
+          doc: { id },
+        } = parsedResp
+      })
+      .finally(() => revalidatePath('/posts/[id]'))
+
     return { message: `Added comment` }
   } catch (error) {
     return { message: `Error` }
   }
 }
+
+export default onAddComment

@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, Fragment } from 'react'
 import { FormEvent } from 'react'
 
 import { Textarea } from '@/components/ui/textarea'
@@ -45,7 +45,9 @@ const Post: FC<IPostPage> = async ({ params }) => {
 
       <div className="mt-8 mb-4 border-t pt-4">
         {(comments as IComment[])?.map(com => (
-          <Comment {...com} />
+          <Fragment key={com.id}>
+            <Comment {...com} />
+          </Fragment>
         ))}
 
         <CommentForm />

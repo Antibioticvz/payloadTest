@@ -7,7 +7,7 @@ import { Post as IPost } from '../../../../payload/src/payload-types'
 
 const PostList: FC<IPost> = ({ id, title, text_html_, image }) => {
   return (
-    <div key={id} className="flex flex-row justify-between pb-8 space-x-8 w-3/4">
+    <div className="flex flex-row justify-between pb-8 space-x-8 w-3/4">
       <img
         src={image as string}
         alt="Post Image"
