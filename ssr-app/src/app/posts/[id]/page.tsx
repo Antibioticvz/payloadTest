@@ -1,6 +1,7 @@
 import 'server-only'
 
 import { FC, Fragment } from 'react'
+import Image from 'next/image'
 
 import Comment from '@/components/comment'
 import { createMarkup } from '@/lib/utils'
@@ -22,11 +23,13 @@ const Post: FC<IPostPage> = async ({ params }) => {
   return (
     <div className="max-w-2xl mx-auto p-4">
       <div className="bg-muted w-full h-64 flex items-center justify-center">
-        <img
+        <Image
           src={image as string}
           alt="Post image"
-          className="w-full text-muted-foreground"
-          style={{ height: '100%', objectFit: 'cover' }}
+          className="w-full h-full text-muted-foreground"
+          width={350}
+          height={100}
+          style={{ objectFit: 'cover' }}
         />
       </div>
 

@@ -1,6 +1,8 @@
 import { FC } from 'react'
-import { Button } from '@/components/ui/button'
 import Link from 'next/link'
+import Image from 'next/image'
+
+import { Button } from '@/components/ui/button'
 import { createMarkup } from '@/lib/utils'
 
 import { IPost } from '@/types/payloadCRM'
@@ -8,11 +10,13 @@ import { IPost } from '@/types/payloadCRM'
 const PostList: FC<IPost> = ({ id, title, text_html_, image }) => {
   return (
     <div className="flex flex-row justify-between pb-8 space-x-8 w-3/4">
-      <img
+      <Image
         src={image as string}
         alt="Post Image"
-        className="bg-gray-200 w-1/2"
-        style={{ height: '350px', objectFit: 'cover' }}
+        className="bg-gray-200 w-1/2 h-80 text-muted-foreground"
+        width={150}
+        height={150}
+        style={{ objectFit: 'cover' }}
       />
 
       <div className="w-1/2">
