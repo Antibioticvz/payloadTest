@@ -61,8 +61,9 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
  <p>[x] Prettier config</p>
  <p>[x] Configure Routes</p>
  <p>[x] Components and Pages</p>
- <p>[ ] Connect to PayloadCMS</p>
- <p>[ ] Comment Functionality</p>
+ <p>[x] Connect to PayloadCMS</p>
+ <p>[x] Comment Functionality</p>
+ <p>[x] Load more posts</p>
  <p>[ ] Add SEO</p>
  <p>[ ] Add Jest tests</p>
 </br>

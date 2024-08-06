@@ -9,6 +9,21 @@ const Posts: CollectionConfig = {
     read: () => true,
     update: () => true,
   },
+  hooks: {
+    afterRead: [
+      async ({ req, doc }) => {
+        const comments = await req.payload.find({
+          collection: 'comments',
+          req,
+          depth: 0,
+          pagination: false,
+          where: { post: { equals: doc.id } },
+        })
+
+        return { ...doc, comments: comments.docs }
+      },
+    ],
+  },
   fields: [
     {
       name: 'title',
@@ -26,13 +41,6 @@ const Posts: CollectionConfig = {
     {
       name: 'image',
       type: 'text',
-    },
-    {
-      name: 'comments',
-      label: 'Comments',
-      type: 'relationship',
-      relationTo: 'comments',
-      hasMany: true,
     },
   ],
 }
