@@ -6,7 +6,7 @@ import { useActionState, FC } from 'react'
 import { Textarea } from '@/components/ui/textarea'
 import { Button } from '@/components/ui/button'
 
-import onAddComment from './onAddComment'
+import onAddComment from '../../lib/onAddComment'
 
 interface ICommentForm {
   postId: string

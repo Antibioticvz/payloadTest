@@ -1,15 +1,12 @@
 import { FC, Fragment } from 'react'
-import { FormEvent } from 'react'
 
-import { Textarea } from '@/components/ui/textarea'
-import { Button } from '@/components/ui/button'
 import Comment from '@/components/comment'
 import { createMarkup } from '@/lib/utils'
 import fetchData from '@/lib/fetchData'
+import CommentForm from '@/components/commentForm'
 
 import { Post as IPost } from '../../../../../payload/src/payload-types'
 import { Comment as IComment } from '../../../../../payload/src/payload-types'
-import CommentForm from './commentForm'
 
 interface IPostPage {
   params: {
