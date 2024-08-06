@@ -1,6 +1,6 @@
 'use server'
 
-async function fetchPosts(nextPage: number | null) {
+async function fetchMorePosts(nextPage: number | null) {
   const res = await fetch(`${process.env.PAYLOAD_API}/posts?limit=5&page=${nextPage}`)
 
   if (!res.ok) {
@@ -11,4 +11,4 @@ async function fetchPosts(nextPage: number | null) {
   return jsonData
 }
 
-export default fetchPosts
+export default fetchMorePosts

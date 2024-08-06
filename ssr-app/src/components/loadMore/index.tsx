@@ -4,7 +4,7 @@ import { FC, useState, Fragment } from 'react'
 
 import { Button } from '@/components/ui/button'
 import PostList from '@/components/postList'
-import fetchPosts from '@/lib/fetchPosts'
+import fetchMorePosts from '@/lib/fetchMorePosts'
 
 import { IPost } from '@/types/payloadCRM'
 
@@ -16,7 +16,7 @@ export const LoadMore: FC = () => {
 
   const loadMore = async () => {
     setPending(true)
-    const jsonData = await fetchPosts(nextPage).finally(() => setPending(false))
+    const jsonData = await fetchMorePosts(nextPage).finally(() => setPending(false))
 
     setNextPage(jsonData.nextPage)
     setPosts([...posts, ...jsonData.docs])
